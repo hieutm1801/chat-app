@@ -1,0 +1,30 @@
+.Table {
+    /* border: 2px solid forestgreen; */
+    border-collapse: collapse;
+    min-width: 100%;
+    margin: 5%;
+    border: 1px solid gray;
+ }
+
+ .Table tbody tr td:nth-child(2) {
+   /* background-color: red; */
+   text-align: left;
+ }
+
+ tr, th, td {
+    padding: 20px;
+    border: 1px solid gray;
+ }
+
+ th {
+   background-color: gray;
+   border: 2px solid red;
+ }
+ 
+ tr {
+
+ }
+ 
+ td {
+   text-align: center;
+ }

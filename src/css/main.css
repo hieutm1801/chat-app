@@ -1,0 +1,18 @@
+.main {
+    
+}
+
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-box {
+    width: 300px;
+    height: 420px;
+    place-items: center;
+    position:fixed;
+    bottom: 150px;
+    right: 50px;
+}
