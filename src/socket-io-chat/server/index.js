@@ -37,6 +37,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(() => {
+server.listen(process.env.SERVER_PORT || 3008, () => {
   console.log(`SERVER RUNNING on address ${server.address().address} port ${server.address().port}`);
 });
