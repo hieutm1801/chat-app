@@ -37,6 +37,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING");
+server.listen(() => {
+  console.log(`SERVER RUNNING on address ${server.address().address} port ${server.address().port}`);
 });
