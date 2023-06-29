@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 const io = new Server(server, {
   cors: {
-    origin: "https://chat-app-eh27.onrender.com/",
+    origin: "https://chat-app-9acl.onrender.com/",
     methods: ["GET", "POST"],
   },
 });
@@ -38,5 +38,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(process.env.SERVER_PORT || 3008, () => {
-  console.log(`SERVER RUNNING on address ${server.address().address} port ${server.address().port}`);
+  console.log(`SERVER RUNNING on ${server.address().address}`);
 });

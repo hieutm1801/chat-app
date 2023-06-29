@@ -5,7 +5,7 @@ import Chat from "./chat";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://chat-app-9acl.onrender.com/");
 
 function JoinChat() {
   const [email, setEmail] = useState("");

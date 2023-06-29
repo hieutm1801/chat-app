@@ -58,7 +58,7 @@ function createWindow() {
   // win.loadFile("index.html");
   win.loadURL(
     isDev
-      ? 'https://chat-app-eh27.onrender.com/'
+      ? 'https://chat-app-9acl.onrender.com/'
       : `file://${path.join(__dirname, '../build/index.html')}`
   );
   // Open the DevTools.
