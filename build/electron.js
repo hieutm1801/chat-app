@@ -2,44 +2,44 @@
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
-const express = require("express");
-const http = require("http");
-const cors = require("cors");
-const { Server } = require("socket.io");
+// const express = require("express");
+// const http = require("http");
+// const cors = require("cors");
+// const { Server } = require("socket.io");
 
-express().use(cors());
+// express().use(cors());
 
-const server = http.createServer(express());
+// const server = http.createServer(express());
 
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
 
-io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+// io.on("connection", (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
 
-  socket.on("join_room", (data) => {
-    socket.join(data);
-    console.log(`User with ID: ${socket.id} joined room: ${data}`);
-  });
+//   socket.on("join_room", (data) => {
+//     socket.join(data);
+//     console.log(`User with ID: ${socket.id} joined room: ${data}`);
+//   });
 
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
-  });
+//   socket.on("send_message", (data) => {
+//     socket.to(data.room).emit("receive_message", data);
+//   });
 
-  socket.on("disconnect", () => {
-    console.log("User Disconnected", socket.id);
-  });
-});
+//   socket.on("disconnect", () => {
+//     console.log("User Disconnected", socket.id);
+//   });
+// });
 
-if (server.address() == null) {
-  server.listen(3001, () => {
-    console.log("SERVER RUNNING");
-  });
-}
+// if (server.address() == null) {
+//   server.listen(3001, () => {
+//     console.log("SERVER RUNNING");
+//   });
+// }
 
 
 
@@ -58,7 +58,7 @@ function createWindow() {
   // win.loadFile("index.html");
   win.loadURL(
     isDev
-      ? 'http://localhost:3000'
+      ? 'https://chat-app-eh27.onrender.com/'
       : `file://${path.join(__dirname, '../build/index.html')}`
   );
   // Open the DevTools.
