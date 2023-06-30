@@ -7,7 +7,7 @@ function Football() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(process.env.FOOTBALL_URL || "https://www.24h.com.vn/bong-da/bang-xep-hang-v-league-c48a427024.html");
+        const response = await fetch("https://www.24h.com.vn/bong-da/bang-xep-hang-v-league-c48a427024.html");
         const html = await response.text();
 
         // Tìm đoạn mã HTML chứa bảng dữ liệu
