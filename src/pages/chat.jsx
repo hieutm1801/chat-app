@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { sendMsg, receiveMsg } from "../utils/api-routes";
+import Axios from 'axios'
 
-function Chat({ socket, email}) {
+function Chat({ socket, email }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
+
       const messageData = {
         room: "fpt",
         author: email,
@@ -19,6 +22,14 @@ function Chat({ socket, email}) {
 
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
+      const { data } = await Axios.post(sendMsg, {
+        room: messageData.room,
+        author: email,
+        message: messageData.message,
+        time: messageData.time
+      });
+
+
       setCurrentMessage("");
     }
   };
@@ -27,6 +38,17 @@ function Chat({ socket, email}) {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
+
+    (async () => {
+      const { data } = await Axios.get(`${receiveMsg}`)
+      console.log(data)
+      if (Array.isArray(data.receiveMessage) && data.receiveMessage.length > 0) {
+        for (let i = 0; i < data.receiveMessage.length; i++) {
+          setMessageList((list) => [...list, data.receiveMessage[i]])
+        }
+      }
+    })();
+
   }, [socket]);
 
   return (
@@ -49,7 +71,7 @@ function Chat({ socket, email}) {
                   </div>
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
+                    <p id="author">{messageContent.author.split("@")[0]}</p>
                   </div>
                 </div>
               </div>
@@ -69,6 +91,7 @@ function Chat({ socket, email}) {
             event.key === "Enter" && sendMessage();
           }}
         />
+        <input type="file" id="fileInput"/>
         <button onClick={sendMessage}>&#9658;</button>
       </div>
     </div>

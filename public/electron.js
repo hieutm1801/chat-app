@@ -2,6 +2,7 @@
 const path = require('path');
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
+require('dotenv').config();
 // const express = require("express");
 // const http = require("http");
 // const cors = require("cors");
@@ -59,7 +60,7 @@ function createWindow() {
   win.loadURL(
     // isDev
       // ? 
-      'https://chat-app-9acl.onrender.com/'
+      process.env.HOST_UTL || 'https://chat-app-9acl.onrender.com/'
       // : 
       // `file://${path.join(__dirname, '../build/index.html')}`
   );

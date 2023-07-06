@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './../css/football.css'
+import './../css/football.css';
+
+
 
 function Football() {
   const [tableData, setTableData] = useState([]);
@@ -34,6 +36,50 @@ function Football() {
     };
 
     fetchData();
+
+
+    
+
+    // const getWebsiteHtml = async (url) => {
+    //   const browser = await puppeteer.launch();
+    //   const page = await browser.newPage();
+    //   await page.goto(url, { waitUntil: 'networkidle2' });
+    //   const html = await page.content();
+    //   await browser.close();
+
+    //   return html;
+    // };
+
+
+    // const axios = require('axios');
+    // const cheerio = require('cheerio');
+
+    // const fetchData = async () => {
+    //   try {
+    //     const url = 'https://www.24h.com.vn/bong-da/bang-xep-hang-bong-da-anh-c48a466585.html?livescore_tab_ranking_type=80foo89mm28qjvyhjzlpwj28k-total';
+    //     const html = await getWebsiteHtml(url);
+    //     const $ = cheerio.load(html);
+
+    //     const tableData = [];
+    //     $('table.table').find('tr').each((index, element) => {
+    //       const columns = $(element).find('td');
+    //       const rowData = [];
+
+    //       columns.each((_, column) => {
+    //         rowData.push($(column).text());
+    //       });
+
+    //       tableData.push(rowData);
+    //     });
+
+    //     console.log(tableData);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // };
+
+    // fetchData();
+
   }, []);
 
 

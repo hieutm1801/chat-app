@@ -1,21 +1,43 @@
 const express = require("express");
-const app = express();
 const http = require("http");
 const path = require('path');
 const cors = require("cors");
-const { Server } = require("socket.io");
-app.use(cors());
+const mongoose = require('mongoose');
+const socket = require("socket.io");
+const app = express();
+// const server = http.createServer(app);
+const router = require('./route')
+require('dotenv').config();
 
-const server = http.createServer(app);
+app.use(cors());
+app.use(express.json())
 app.use(express.static(path.join(__dirname, '../../../build')));
+app.use('/api', router)
+
+mongoose
+  .connect(process.env.MONGOOSE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB Connection Successfully")
+  })
+  .catch ((err) => {
+    console.log(err.message);
+  });
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const io = new Server(server, {
+const server = app.listen(3001, () => {
+  console.log(`SERVER RUNNING on ${server.address().address} port: ${server.address().port}`);
+});
+
+const io = socket(server, {
   cors: {
-    origin: "https://chat-app-9acl.onrender.com/",
+    origin: process.env.HOST_URL,
     methods: ["GET", "POST"],
   },
 });
@@ -37,6 +59,3 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(process.env.SERVER_PORT || 3008, () => {
-  console.log(`SERVER RUNNING on ${server.address().address}`);
-});
