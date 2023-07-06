@@ -91,7 +91,7 @@ function Chat({ socket, email }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <input type="file" id="fileInput"/>
+        {/* <input type="file" id="fileInput"/> */}
         <button onClick={sendMessage}>&#9658;</button>
       </div>
     </div>
