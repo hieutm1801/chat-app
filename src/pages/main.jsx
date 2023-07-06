@@ -7,7 +7,10 @@ function Main() {
   return (
     <body>
       <div className="container">
-        <Football />
+        <div className="left-body">
+
+          <Football />
+        </div>
         <div className='chat-box'>
           <JoinChat />
         </div>
