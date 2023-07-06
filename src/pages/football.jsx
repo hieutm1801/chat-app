@@ -87,16 +87,16 @@ function Football() {
     <table className="Table">
       <thead>
         <tr>
-          <th>Pos</th>
-          <th>Đội</th>
-          <th>P</th>
-          <th>W</th>
-          <th>D</th>
-          <th>L</th>
-          <th>F</th>
-          <th>A</th>
-          <th>+/-</th>
-          <th>PTS Phong độ</th>
+          <th>TT</th>
+          <th>CLB</th>
+          <th>ST</th>
+          <th>T</th>
+          <th>H</th>
+          <th>B</th>
+          <th>Tg</th>
+          <th>Th</th>
+          <th>HS</th>
+          <th>Đ</th>
         </tr>
       </thead>
       <tbody>
