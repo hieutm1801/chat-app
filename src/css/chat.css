@@ -71,11 +71,17 @@ body {
   cursor: pointer;
 }
 .chat-window .chat-header p {
-  display: block;
+  display: inline;
   padding: 0 1em 0 2em;
   color: #fff;
   font-weight: 700;
   line-height: 45px;
+}
+
+.chat-window .chat-header .chat-logout {
+  position: fixed;
+  right: 50px;
+  color: white;
 }
 
 .chat-window .chat-body {
