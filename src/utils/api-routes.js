@@ -1,5 +1,5 @@
 
-export const host = "https://chat-app-9acl.onrender.com/"
+export const host = "https://chat-app-9acl.onrender.com:3001"
 export const checkUserExists = `${host}/api/checkUserExists`
 export const addUser = `${host}/api/addUser`
 export const joinChat = `${host}/api/allusers`;
